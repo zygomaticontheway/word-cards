@@ -36,4 +36,8 @@ public class GroupController {
         return service.save(dto);
     }
 
+    @DeleteMapping("/groups/{id}")
+    public boolean deleteGroup (@PathVariable (name = "id") Long id){
+        return service.removeGroup(id);
+    }
 }

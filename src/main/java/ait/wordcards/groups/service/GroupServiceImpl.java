@@ -69,4 +69,16 @@ public class GroupServiceImpl implements IGroupService {
 
         return repository.findById(id).orElseThrow(() -> new GroupNotFoundException("Group with id: " + id + " not found"));
     }
+
+    @Override
+    public boolean removeGroup(Long id) {
+
+        if (findById(id) != null) {
+            repository.deleteById(id);
+        } else {
+            throw new GroupNotFoundException("Group with id: " + id + " not found");
+        }
+
+        return true;
+    }
 }

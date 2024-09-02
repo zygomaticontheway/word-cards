@@ -1,5 +1,6 @@
 package ait.wordcards.wordCard.service;
 
+import ait.wordcards.exception.CardNotFoundException;
 import ait.wordcards.groups.dto.GroupResponseDto;
 import ait.wordcards.groups.entity.Group;
 import ait.wordcards.groups.repository.IGroupRepository;
@@ -42,7 +43,7 @@ public class CardServiceImpl implements ICardService {
                     .map(c -> mapper.map(c, CardResponseDto.class))
                     .toList();
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new CardNotFoundException("Card with language set: " + language + "–" + translateLanguage + " not found");
         }
     }
 
@@ -96,6 +97,7 @@ public class CardServiceImpl implements ICardService {
         Card findedCard = repository.findCardById(cardId);
 
         findedCard.addGroup(findedGroup);
+        repository.save(findedCard);
 
         return mapper.map(findedCard, CardResponseDto.class);
     }
@@ -107,6 +109,7 @@ public class CardServiceImpl implements ICardService {
         Card findedCard = repository.findCardById(cardId);
 
         findedCard.removeGroup(findedGroup);
+        repository.save(findedCard);
 
         return mapper.map(findedCard, CardResponseDto.class);
     }

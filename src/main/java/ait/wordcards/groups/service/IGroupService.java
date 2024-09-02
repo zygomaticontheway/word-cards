@@ -13,4 +13,5 @@ public interface IGroupService {
     GroupResponseDto save (GroupRequestDto dto);
     GroupResponseDto update (Long id, GroupRequestDto dto);
     Group findGroupById (Long id);
+    boolean removeGroup (Long id);
 }

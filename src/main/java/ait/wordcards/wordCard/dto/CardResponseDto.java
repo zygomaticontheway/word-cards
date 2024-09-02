@@ -38,7 +38,7 @@ public class CardResponseDto {
                 ", example='" + example + '\'' +
                 ", translateLanguage='" + translateLanguage + '\'' +
                 ", translation='" + translation + '\'' +
-//                ", groups= [" +  groupsInfo (groups) + "]" +
+                ", groups= [" +  groupsInfo (groups) + "]" +
                 '}';
     }
 }

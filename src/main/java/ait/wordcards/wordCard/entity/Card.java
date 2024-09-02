@@ -72,6 +72,7 @@ public class Card {
     public boolean removeGroup (Group group){
         return groups.remove(group);
     }
+
     private String groupsInfo(Set<Group> groups){
         return groups.stream()
                 .map(group -> "Group: " + '\"' + group.getTitle() + '\"')
