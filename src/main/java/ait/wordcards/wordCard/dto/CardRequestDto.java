@@ -1,6 +1,9 @@
-package ait.wordcards.dto;
+package ait.wordcards.wordCard.dto;
 
+import ait.wordcards.groups.entity.Group;
 import lombok.*;
+
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +16,7 @@ public class CardRequestDto {
     private String example;
     private String translateLanguage;
     private String translation;
-    private String group;
+//    private Set<Group> groups;
 
     @Override
     public String toString() {
@@ -23,7 +26,7 @@ public class CardRequestDto {
                 ", example='" + example + '\'' +
                 ", translateLanguage='" + translateLanguage + '\'' +
                 ", translation='" + translation + '\'' +
-                ", group='" + group + '\'' +
+//                ", group='" + group + '\'' +
                 '}';
     }
 }

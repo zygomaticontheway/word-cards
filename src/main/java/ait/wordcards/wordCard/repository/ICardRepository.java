@@ -1,6 +1,6 @@
-package ait.wordcards.repository;
+package ait.wordcards.wordCard.repository;
 
-import ait.wordcards.entity.Card;
+import ait.wordcards.wordCard.entity.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
