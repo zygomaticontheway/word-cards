@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -51,7 +52,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserResponseDto setAdminRole(String username) {
-        return null;
+        User user = repository.findUserByName(username).orElseThrow(() -> new UsernameNotFoundException("User with name: " + username + " not found"));
+        Role role = roleService.getRoleByTitle("ROLE_ADMIN");
+        Set<Role> currentRoles = user.getRoles();
+
+        currentRoles.add(role);
+
+        user.setRoles(currentRoles);
+        repository.save(user);
+
+        return mapper.map(user, UserResponseDto.class);
     }
 
     //как spring получает User по логину
